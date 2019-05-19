@@ -19,7 +19,10 @@ pipeline {
       steps {
         sh 'sudo docker build . -t venuhello:1'
         sh 'whoami'
-        sh 'sudo docker login -u $USERNAME -p $PASSWORD phx.ocir.io'
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'venu-ocir-creds',
+          usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+          sh 'sudo docker login -u $USERNAME -p $PASSWORD phx.ocir.io'
+        }  
         sh'sudo docker tag venuhello:1 phx.ocir.io/ociateam/venuhello:1'
         sh 'sudo docker push phx.ocir.io/ociateam/venuhello:1'
         sh 'echo "Tests successful"'
