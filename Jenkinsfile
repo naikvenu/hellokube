@@ -34,8 +34,7 @@ pipeline {
           sh 'echo uname=$USERNAME pwd=$PASSWORD'
           
           }
-          sh 'exit;whoami'
-          sh 'sudo docker login -u $USERNAME -p $PASSWORD phx.ocir.io'
+          sh 'whoami'
           sh "sudo docker tag venuhello:1 phx.ocir.io/ociateam/venuhello:1"
           sh 'sudo docker push phx.ocir.io/ociateam/venuhello:1'
           sh 'echo "Tests successful"'
