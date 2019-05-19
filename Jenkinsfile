@@ -29,11 +29,7 @@ pipeline {
     stage('Push image to OCIR') {
       agent any
       steps {
-          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'venu-ocir-creds',
-          usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-          sh 'echo uname=$USERNAME pwd=$PASSWORD'
           
-          }
           sh 'whoami'
           sh "sudo docker tag venuhello:1 phx.ocir.io/ociateam/venuhello:1"
           sh 'sudo docker push phx.ocir.io/ociateam/venuhello:1'
