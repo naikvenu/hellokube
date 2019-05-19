@@ -1,6 +1,5 @@
 pipeline {
   agent {
-<<<<<<< HEAD
     label 'jenkinslave'
   }
 
@@ -35,19 +34,3 @@ pipeline {
       }
     }
   }
-
-=======
-    docker {
-      image 'nginx:latest'
-    }
-
-  }
-  stages {
-    stage('Stage') {
-      steps {
-        sh 'whoami'
-      }
-    }
-  }
-}
->>>>>>> b1c77cc9912de66390573370bb01321e5e5c42db
